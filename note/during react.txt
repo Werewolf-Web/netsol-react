@@ -1,0 +1,23 @@
+⭐ map() શું છે?
+
+map() JavaScript નો એક Array Method છે.
+
+તેનો ઉપયોગ:
+
+array ના દરેક item પર loop ચલાવવા
+
+દરેક item ને બદલીને નવું value બનાવવા
+
+અને આખરે એક નવું array return કરવા થાય છે
+
+React માં map() સામાન્ય રીતે list રેન્ડર કરવા માટે બહુ ઉપયોગીમાં છે.
+
+⭐ map() કેવી રીતે કામ કરે છે?
+
+Syntax:
+
+array.map((item, index) => {
+  return item;
+});
+
+
