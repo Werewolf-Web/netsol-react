@@ -90,53 +90,28 @@
 // export default App
 
 
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 
-// const App = () => {
-//    const [num, setNum] = useState(0);
+const App = () => {
+   const [num, setNum] = useState(0);
 
-// function increseNum(){
-// setNum(num+1)
-// }
-// function decrieseNum(){
-// setNum(num-1)
-// }
-//   return (
-   
-//     <>
-//     <div className='container'>
-//     <h3>{num}</h3>
-//     <button onClick={increseNum} className='px-2 py-2'>incriese +1</button>
-//     <button onClick={decrieseNum} className='px-2 py-2'>decriese -1</button>
-//     </div>
-//     </>
-//   )
-// }
-
-
-import { useState } from 'react';
-
-function App() {
-  const [text, setText] = useState('hello');
-
-  function handleChange(e) {
-    setText(e.target.value);
-  }
-
+function increseNum(){
+setNum(num+1)
+}
+function decrieseNum(){
+setNum(num-1)
+}
   return (
+   
     <>
-    <div className='container py-4'>
-
-      <input value={text} onChange={handleChange} />
-      <p>You typed: {text}</p>
-      <button onClick={() => setText('hello')}>
-        Reset
-      </button>
+    <div className='container'>
+    <h3>{num}</h3>
+    <button onClick={increseNum} className='px-2 py-2'>incriese +1</button>
+    <button onClick={decrieseNum} className='px-2 py-2'>decriese -1</button>
     </div>
     </>
-  );
+  )
 }
-
 
 export default App
 
