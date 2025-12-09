@@ -1,68 +1,43 @@
-import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
+import Login from './components/Login';
+import TaskManager from './components/TaskManager';
+import './App.css';
 
-const App = () => {
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const [text, setText] = useState('');
-  const [output, setOutput] = useState([]);
+  // Check for existing session on component mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      setCurrentUser(savedUser);
+      setIsLoggedIn(true);
+    }
+  }, []);
 
-  function handleChange(e) {
-    setText(e.target.value);
-  }
+  const handleLogin = (username) => {
+    setCurrentUser(username);
+    setIsLoggedIn(true);
+    localStorage.setItem('currentUser', username);
+  };
 
-  const handleall = () => {
-    if (text.trim() === "") return;
-
-    const newItem = { text: text };
-    setOutput([...output, newItem]);
-    setText("");
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    localStorage.removeItem('currentUser');
   };
 
   return (
-    <div>
-
-      <div className='container px-2 py-4 d-flex gap-3'>
-        <textarea 
-          placeholder='enter something' 
-          className='form-control'
-          value={text}
-          onChange={handleChange}
-        />
-
-        <Button 
-          className="btn btn-light" 
-          onClick={handleall}
-          style={{ backgroundColor: "rgba(154, 190, 245, 1)" }}
-        >
-          Submit
-        </Button>
-      </div>
-
-      <div className='container'>
-        <p className='mt-3' style={{ whiteSpace: "pre-line" }}>
-          {text}
-        </p>
-      </div>
-
-      <div className='container mt-4'>
-        <h4>All Messages:</h4>
-
-        {output.map((item, index) => (
-          <p 
-            key={index} 
-            style={{ whiteSpace: "pre-line", padding: "8px", background: "#f2f2f2", borderRadius: "5px", marginBottom: "10px" }}
-          >
-            {item.text}
-           
-          </p>
-          
-        ))}
-       
-
-      </div>
-
+    <div className="app-container">
+      {isLoggedIn ? (
+        <TaskManager currentUser={currentUser} onLogout={handleLogout} />
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+
