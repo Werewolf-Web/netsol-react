@@ -20,7 +20,7 @@ const App = () => {
       <Container>
       <Row>
         <Col> <Inputlist/></Col>
-        <Col><Livelist/></Col>
+        <Col></Col>
       </Row>
       </Container>
     </div>
@@ -28,7 +28,7 @@ const App = () => {
           <div className='container py-3'>
             <Container>
               <Row>
-                <Col> <Alllist/></Col>
+                <Col> </Col>
               </Row>
             </Container>
          

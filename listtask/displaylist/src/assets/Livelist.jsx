@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Livelist = () => {
+const Livelist = ({name,description}) => {
   return (
     
         
@@ -14,6 +14,7 @@ const Livelist = () => {
       }}
     >
     <h1>Live List</h1>
+    <p>name  : {name}<br/>To Day Work  : {description}</p>
     </div>
     
   )
