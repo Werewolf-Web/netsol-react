@@ -59,7 +59,7 @@ const handleSubmit = () => {
 
       <div className="d-flex flex-column">
         <label className="fw-bold fs-6 mb-2">Description:</label>
-        <input 
+        <textarea 
           type="text"
           placeholder="Enter your Work Description !"
           className="form-control"
@@ -91,7 +91,8 @@ const handleSubmit = () => {
   </div>
 </div>
 <div>
-    <Alllist output={output}/>
+<Alllist output={output} setOutput={setOutput} />
+
 </div>
 </>
 
