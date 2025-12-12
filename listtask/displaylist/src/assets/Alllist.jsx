@@ -14,43 +14,94 @@ const Alllist = ({ output, setOutput }) => {
       }}
     >
       <h1>All-list</h1>
-      
+
       <ul className="d-flex flex-wrap gap-3">
         {output.map((item, index) => (
-          <li 
-            key={index} 
-            style={{ width: "200px", height: "130px" }} 
-            // className="border rounded p-2"
+          <li
+            key={index}
+            style={{
+              width: "230px",
+              height: "150px",
+              padding: "10px",
+              borderRadius: "10px",
+              background: "white",
+              listStyle: "none",
+            }}
           >
-            Name : {item.name} <br /> 
-            To Day Work : {item.description} <br/>
+            {/* EDIT MODE */}
+            {item.isEditing ? (
+              <>
+                <input
+                  type="text"
+                  value={item.name}
+                  className="form-control mb-2"
+                  onChange={(e) => {
+                    const updated = [...output];
+                    updated[index].name = e.target.value;
+                    setOutput(updated);
+                  }}
+                />
 
-            <Button
-              className="m-2"
-              onClick={() => {
-                const updatedList = output.filter((_, i) => i !== index);
-                setOutput(updatedList);
-              }}
-            >
-              Delete
-            </Button>
+                <input
+                  type="text"
+                  value={item.description}
+                  className="form-control mb-2"
+                  onChange={(e) => {
+                    const updated = [...output];
+                    updated[index].description = e.target.value;
+                    setOutput(updated);
+                  }}
+                />
 
-           <Button
-  onClick={() => {
-    const updated = output.map((item, i) =>
-      i === index ? { ...item, isEditing: true } : item
-    );
+                <Button
+                  size="sm"
+                  variant="success"
+                  onClick={() => {
+                    const updated = output.map((item, i) =>
+                      i === index ? { ...item, isEditing: false } : item
+                    );
+                    setOutput(updated);
+                  }}
+                >
+                  Save
+                </Button>
+              </>
+            ) : (
+              /* NORMAL VIEW */
+              <>
+                <strong>Name:</strong> {item.name} <br />
+                <strong>Work:</strong> {item.description} <br />
 
-    setOutput(updated);
-  }}
->
-  Edit
-</Button>
+                <Button
+                  size="sm"
+                  className="mt-2 me-2"
+                  onClick={() => {
+                    const updated = output.map((item, i) =>
+                      i === index ? { ...item, isEditing: true } : item
+                    );
+                    setOutput(updated);
+                  }}
+                >
+                  Edit
+                </Button>
+
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={() => {
+                    const updatedList = output.filter((_, i) => i !== index);
+                    setOutput(updatedList);
+                  }}
+                >
+                  Delete
+                </Button>
+              </>
+            )}
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default Alllist;
