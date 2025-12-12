@@ -1,0 +1,81 @@
+.user-selector {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  align-items: center;
+}
+
+.user-selector label {
+  font-weight: 600;
+  color: #333;
+}
+
+.user-selector select {
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.user-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #667eea;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.error {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #c53030;
+  margin: 1rem 0;
+}
+
+.user-card {
+  margin: 2rem 0;
+}
+
+.user-info {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 4px;
+  border-left: 4px solid #667eea;
+}
+
+.user-info h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.user-info p {
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.user-info strong {
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .user-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-selector select {
+    width: 100%;
+  }
+}
