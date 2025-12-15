@@ -8,7 +8,7 @@ function Login({ setUser }) {
 
   const handleLogin = () => {
     const userData = { username, password };
-    sessionStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
   };
 

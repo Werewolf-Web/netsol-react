@@ -9,7 +9,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 const Home = ({ user, setUser }) => {
   const handleLogout = () => {
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
     setUser("");
   };
 

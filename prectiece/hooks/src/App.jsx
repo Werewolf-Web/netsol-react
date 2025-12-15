@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(
-    JSON.parse(sessionStorage.getItem("user"))
+    JSON.parse(localStorage.getItem("user"))
   );
 
   return (
